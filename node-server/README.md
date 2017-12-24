@@ -15,3 +15,6 @@ node 后端练手项目
 
 ## step4
 一个简单的 mock server
+
+## step5
+静态文件服务器
