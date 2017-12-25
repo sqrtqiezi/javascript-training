@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Music Player</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="./dist/vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./dist/styles.css">
 </head>
 <body>
-    <h1>Hello World!</h1>
+  <main>
+    <div id="app"></div>
+  </main>
+  <script id="template" type="x-tmpl-mustache">
+    <div class="player-panel">
+        <div class="player-body" style="background-image: url('{{ cover }}')"></div>
+        <div class="player-progress-wrapper">
+          <div class="player-progress"></div>
+        </div>
+        <div class="player-controller">
+          <div class="backward">
+            <a href="#" class="js-backward"><i class="fa fa-step-backward" aria-hidden="true"></i></a>
+          </div>
+          <div class="meta">
+            <h3>{{ title }}</h3>
+            <span>{{ artist }}</span>
+          </div>
+          <div class="forward">
+            <a href="#" class="js-forward"><i class="fa fa-step-forward" aria-hidden="true"></i></a>
+          </div>
+          <div class="play">
+            <a href="#" class="js-play"><i class="fa fa-play" aria-hidden="true"></i></a>
+          </div>
+          <div class="volume">
+            <a href="#" class="js-volume"><i class="fa fa-volume-up" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+  </script>
+  <script src="./dist/bundle.js"></script>
 </body>
 </html>

@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "title": "Rolling In The Deep",
+      "artist": "Adele",
+      "cover": "http://cdn.hfextreme.cn/bg-image2.jpg-webp2",
+      "url": "http://cdn.hfextreme.cn/Adele%20-%20Rolling%20In%20The%20Deep.mp3"
+    },
+    {
+      "title": "Viva la Vida",
+      "artist": "Coldplay",
+      "cover": "http://cdn.hfextreme.cn/bg-image3.jpg-webp2",
+      "url": "http://cdn.hfextreme.cn/Coldplay%20-%20Viva%20la%20Vida.mp3"
+    },
+    {
+      "title": "Welcome To The Black Parade",
+      "artist": "My Chemical Romance",
+      "cover": "http://cdn.hfextreme.cn/bg-image4.jpg-webp2",
+      "url": "http://cdn.hfextreme.cn/My%20Chemical%20Romance%20-%20Welcome%20To%20The%20Black%20Parade%20%28Album%20Version%29.mp3"
+    },
+    {
+      "title": "L-O-V-E (1990 Digital Remaster)",
+      "artist": "Nat King Cole",
+      "cover": "http://cdn.hfextreme.cn/bg-image5.jpg-webp2",
+      "url": "http://cdn.hfextreme.cn/Nat%20King%20Cole%20-%20L-O-V-E%20%281990%20Digital%20Remaster%29.mp3"
+    },
+    {
+      "title": "Dirty Paws",
+      "artist": "Of Monsters And Men",
+      "cover": "http://cdn.hfextreme.cn/bg-image6.jpg-webp2",
+      "url": "http://cdn.hfextreme.cn/Of%20Monsters%20And%20Men%20-%20Dirty%20Paws.mp3"
+    }
+  ]
+}
