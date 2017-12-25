@@ -11,7 +11,7 @@ class Player {
     this.template = $('#template').html()
     Mustache.parse(this.template)
     this.isMuted = false
-    this.isPaused = false
+    this.isPaused = true
   }
 
   load(playlist) {
@@ -20,8 +20,6 @@ class Player {
 
   play() {
     this._play()
-    this.isPaused = false
-    this._renderPause()
   }
 
   backward() {
@@ -99,6 +97,8 @@ class Player {
     }
 
     this.music.play()
+    this.isPaused = false
+    this._renderPause()
   }
 
   _render(item) {
