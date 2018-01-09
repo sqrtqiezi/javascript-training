@@ -6,8 +6,7 @@ import './style.css';
 class Movies extends React.Component {
   render() {
     const {subjects} = this.props;
-    console.log('in movies');
-    console.log(subjects);
+    
     return (
       <div className="container">
         {

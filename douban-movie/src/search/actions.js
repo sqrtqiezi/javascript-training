@@ -3,21 +3,21 @@ import fetchJsonp from 'fetch-jsonp';
 
 let nextSeqId = 0;
 
-export const fetchBeimeiStarted = () => ({
+export const fetchSearchStarted = () => ({
   type: FETCH_STARTED
 });
 
-export const fetchBeimeiSuccess = (result) => ({
+export const fetchSearchSuccess = (result) => ({
   type: FETCH_SUCCESS,
   result
 });
 
-export const fetchBeimeiFailure = (error) => ({
+export const fetchSearchFailure = (error) => ({
   type: FETCH_FAILURE,
   error
 });
 
-export const fetchBeimei = (start) => {
+export const fetchSearch = (q) => {
   return (dispatch) => {
     const seqId = ++ nextSeqId;
 
@@ -27,16 +27,16 @@ export const fetchBeimei = (start) => {
       }
     }
 
-    const apiUrl = `//api.douban.com/v2/movie/us_box`;
+    const apiUrl = `//api.douban.com/v2/movie/search?q=${q}`;
 
-    dispatchIfValid(fetchBeimeiStarted())
+    dispatchIfValid(fetchSearchStarted())
 
     return fetchJsonp(apiUrl).then((response) => {
       return response.json();
     }).then(function(json) {
-      dispatchIfValid(fetchBeimeiSuccess(json))
+      dispatchIfValid(fetchSearchSuccess(json))
     }).catch((error) => {
-      dispatchIfValid(fetchBeimeiFailure(error));
+      dispatchIfValid(fetchSearchFailure(error));
     })
   }
 }

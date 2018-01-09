@@ -12,7 +12,7 @@ class Paihang extends React.Component {
     this.props.loadMovies();
   }
 
-  listenScrollEvent(event) {
+  onScroll(event) {
     const {scrollHeight, scrollTop, clientHeight} = event.target;
 
     if (scrollHeight - scrollTop === clientHeight) {
@@ -23,7 +23,7 @@ class Paihang extends React.Component {
   render() {
     const {status, subjects, active} = this.props;
     return (
-      <section onScroll={this.listenScrollEvent.bind(this)} className={active ? "active" : ''}>
+      <section onScroll={this.onScroll.bind(this)} className={active ? "active" : ''}>
         <Movies subjects={subjects} />
         <Loading status={status} />
       </section>

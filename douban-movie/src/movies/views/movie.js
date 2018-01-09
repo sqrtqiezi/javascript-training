@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Movie = ({href, cover, title, score, collect, year, type, director, casts}) => {
   return (
@@ -28,5 +29,16 @@ const Movie = ({href, cover, title, score, collect, year, type, director, casts}
   )
 };
 
+Movie.propTypes = {
+  href: PropTypes.string.isRequired, 
+  cover: PropTypes.string.isRequired, 
+  title: PropTypes.string.isRequired, 
+  score: PropTypes.number.isRequired, 
+  collect: PropTypes.number.isRequired, 
+  year: PropTypes.string.isRequired, 
+  type: PropTypes.string.isRequired, 
+  director: PropTypes.string.isRequired, 
+  casts: PropTypes.string.isRequired
+}
 
 export default Movie;

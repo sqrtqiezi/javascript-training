@@ -4,13 +4,15 @@ import thunk from 'redux-thunk'
 import {reducer as menuReducer} from './footer_menu';
 import {reducer as paihangReducer} from './paihang';
 import {reducer as beimeiReducer} from './beimei';
+import {reducer as searchReducer} from './search';
 
 const win = window;
 
 const reducer = combineReducers({
   menu: menuReducer,
   paihang: paihangReducer,
-  beimei: beimeiReducer
+  beimei: beimeiReducer,
+  search: searchReducer
 });
 
 const middlewares = [thunk];

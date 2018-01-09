@@ -18,7 +18,6 @@ export const fetchPaihangFailure = (error) => ({
 });
 
 export const fetchPaihang = (start) => {
-  console.log('fetching')
   return (dispatch) => {
     const seqId = ++ nextSeqId;
 
