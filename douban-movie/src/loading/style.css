@@ -1,0 +1,19 @@
+.loading {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.loading .icon-loading {
+  display: inline-block;
+  animation: 1s rotate linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg);  }
+}
+
+.loading .error {
+  color: red;
+}

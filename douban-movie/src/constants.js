@@ -12,3 +12,9 @@ export const MenuTypes = {
     caption: '搜索'
   }
 }
+
+export const Status = {
+  LOADING: 'loading',
+  SUCCESS: 'success',
+  FAILURE: 'failure'
+}

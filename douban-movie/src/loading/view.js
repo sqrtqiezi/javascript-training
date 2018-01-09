@@ -1,24 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {LOADING, SUCCESS, FAILURE} from '../status';
+import {Status} from '../constants';
+import './style.css';
 
 const Loading = ({status}) => {
   switch(status) {
-    case LOADING: {
+    case Status.LOADING: {
       return (
         <div className="loading">
           <span className="iconfont icon-loading"></span>
         </div>
       )
     }
-    case FAILURE: {
+    case Status.FAILURE: {
       return (
         <div className="loading">
           <span className="error">加载异常</span>
         </div>
       )
     }
-    case SUCCESS: {
+    case Status.SUCCESS: {
       return '';
     }
     default: {

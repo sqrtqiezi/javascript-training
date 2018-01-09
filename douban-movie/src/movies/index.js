@@ -1,4 +1,3 @@
-import view from './views/movies';
-import reducer from './reducer';
+import view from "./views/movies";
 
-export {view, reducer};
+export {view};

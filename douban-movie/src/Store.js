@@ -2,13 +2,15 @@ import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk'
 
 import {reducer as menuReducer} from './footer_menu';
-import {reducer as moviesReducer} from './movies';
+import {reducer as paihangReducer} from './paihang';
+import {reducer as beimeiReducer} from './beimei';
 
 const win = window;
 
 const reducer = combineReducers({
   menu: menuReducer,
-  movies: moviesReducer
+  paihang: paihangReducer,
+  beimei: beimeiReducer
 });
 
 const middlewares = [thunk];

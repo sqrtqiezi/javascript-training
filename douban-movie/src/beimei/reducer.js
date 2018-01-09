@@ -1,5 +1,5 @@
-import {FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE} from './actionTypes.js';
-import * as Status from './status.js';
+import {FETCH_STARTED, FETCH_SUCCESS, FETCH_FAILURE} from './actionTypes';
+import {Status} from '../constants';
 
 export default (state = {status: Status.LOADING, subjects: []}, action) => {
   switch(action.type) {
@@ -7,7 +7,8 @@ export default (state = {status: Status.LOADING, subjects: []}, action) => {
       return {...state, status: Status.LOADING};
     }
     case FETCH_SUCCESS: {
-      return {...state, status: Status.SUCCESS, subjects: [...state.subjects, ...action.result.subjects]};
+      const subjects = action.result.subjects.map(item => item.subject);
+      return {...state, status: Status.SUCCESS, subjects: [...state.subjects, ...subjects]};
     }
     case FETCH_FAILURE: {
       return {...state, status: Status.FAILURE};
