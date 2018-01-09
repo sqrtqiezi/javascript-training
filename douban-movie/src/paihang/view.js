@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import * as actions from './actions';
 import {view as Movies} from '../movies';
-import {MenuTypes} from '../constants'
+import {MenuTypes} from '../constants';
+import Transition from 'react-transition-group/Transition';
 
 import {view as Loading} from '../loading';
 
@@ -21,12 +22,32 @@ class Paihang extends React.Component {
   }
 
   render() {
+    const duration = 200;
+
+    const defaultStyle = {
+      transition: `opacity ${duration}ms ease-in-out`,
+      opacity: 0,
+    };
+
+    const transitionStyles = {
+      entering: { opacity: 0 },
+      entered:  { opacity: 1 },
+    };
+
     const {status, subjects, active} = this.props;
     return (
-      <section onScroll={this.onScroll.bind(this)} className={active ? "active" : ''}>
-        <Movies subjects={subjects} />
-        <Loading status={status} />
-      </section>
+      <Transition in={active} timeout={duration}>
+        {(state) => (
+          <section onScroll={this.onScroll.bind(this)} className={active ? "active" : ''}
+            style={{
+              ...defaultStyle,
+              ...transitionStyles[state]
+            }} >
+            <Movies subjects={subjects} />
+            <Loading status={status} />
+          </section>
+        )}
+      </Transition>
     )
   }
 }
