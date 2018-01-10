@@ -17,6 +17,7 @@ React 练手项目
 * `redux-thunk` 让 redux 可以处理异步 action
 * `redux-immutable-state-invariant` 在开发阶段检查 redux 中有无直接修改 state 的代码
 * `react-transition-group` 帮助 react 实现动画效果
+* `styled-components` css-in-js
 
 ### 使用的 Douban API
 * [Top 250](https://developers.douban.com/wiki/?title=movie_v2#top250)

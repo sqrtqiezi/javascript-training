@@ -25,17 +25,3 @@ html, body ,#root, .App, main {
 .icon-paihang:before { content: "\e68d"; }
 
 .icon-beimei:before { content: "\e787"; }
-
-section {
-  display: none;
-  box-sizing: border-box;
-  width: 100%;
-  height: calc(100% - 45px);
-  overflow: scroll;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-section.active {
-  display: block;
-}

@@ -6,6 +6,7 @@ import {view as Movies} from '../movies';
 import {MenuTypes} from '../constants'
 import Transition from 'react-transition-group/Transition';
 
+import {Section} from '../style';
 import {view as Loading} from '../loading';
 
 class Beimei extends React.Component {
@@ -30,14 +31,14 @@ class Beimei extends React.Component {
     return (
       <Transition in={active} timeout={duration}>
         {(state) => (
-          <section className={active ? "active" : ''}
+          <Section active={active}
             style={{
               ...defaultStyle,
               ...transitionStyles[state]
             }} >
             <Movies subjects={subjects} />
             <Loading status={status} />
-          </section>
+          </Section>
         )}
       </Transition>
     )

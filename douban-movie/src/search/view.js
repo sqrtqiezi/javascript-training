@@ -7,6 +7,7 @@ import {MenuTypes} from '../constants'
 
 import Transition from 'react-transition-group/Transition';
 
+import {Section} from '../style';
 import {view as Loading} from '../loading';
 import './style.css';
 
@@ -52,7 +53,7 @@ class Search extends React.Component {
     return (
       <Transition in={active} timeout={duration}>
         {(state) => (
-          <section className={active ? "active" : ''}
+          <Section active={active} 
             style={{
               ...defaultStyle,
               ...transitionStyles[state]
@@ -63,7 +64,7 @@ class Search extends React.Component {
             </div>
             <Movies subjects={subjects} />
             <Loading status={status} />
-          </section>
+          </Section>
         )}
       </Transition>
     )
