@@ -1,3 +1,4 @@
-import view from './view';
+import view from './Loading';
 
-export {view};
+/* eslint-disable import/prefer-default-export */
+export { view };

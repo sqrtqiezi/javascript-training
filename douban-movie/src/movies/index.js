@@ -1,3 +1,4 @@
-import view from "./views/movies";
+import view from './views/movies';
 
-export {view};
+/* eslint-disable import/prefer-default-export */
+export { view };

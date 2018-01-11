@@ -11,10 +11,10 @@ export const MenuTypes = {
     icon: 'search',
     caption: '搜索'
   }
-}
+};
 
 export const Status = {
   LOADING: 'loading',
   SUCCESS: 'success',
   FAILURE: 'failure'
-}
+};

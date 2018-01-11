@@ -1,12 +1,12 @@
-import {SET_MENU} from './actionTypes.js';
-import {MenuTypes} from '../constants.js'
+import { SET_MENU } from './actionTypes';
+import { MenuTypes } from '../constants';
 
 export default (state = MenuTypes.PAIHANG, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case SET_MENU: {
       return action.menu;
     }
     default:
       return state;
   }
-}
+};

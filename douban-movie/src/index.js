@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import './index.css';
-import App from './App';
 
-import store from './Store'
+import App from './App';
+import store from './Store';
 
 ReactDOM.render(
-<Provider store={store}>
-  <App />
-</Provider>, 
-document.getElementById('root'));
+  /* eslint-disable react/jsx-filename-extension */
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  /* eslint-disable no-undef */
+  document.getElementById('root')
+);
