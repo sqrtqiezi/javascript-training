@@ -1,15 +1,15 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 import { MenuTypes } from '../../constants';
-import './style.css';
+import { FooterMenu as StyledFooterMenu } from '../../style';
 
 function FooterMenu() {
   return (
-    <footer>
+    <StyledFooterMenu>
       <MenuItem menu={MenuTypes.PAIHANG} />
       <MenuItem menu={MenuTypes.BEIMEI} />
       <MenuItem menu={MenuTypes.SEARCH} />
-    </footer>
+    </StyledFooterMenu>
   );
 }
 

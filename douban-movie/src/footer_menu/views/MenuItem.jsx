@@ -2,28 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setMenu } from '../actions';
+import { MenuItem as StyledMenuItem } from '../../style';
 
 const MenuItem = ({
   active, icon, caption, onClick,
-}) => {
-  const clickHandler = (event) => {
-    event.preventDefault();
-    onClick();
-  };
-
-  return (
-    <div
-      onClick={clickHandler}
-      onKeyPress={clickHandler}
-      className={active ? 'active' : ''}
-      role="button"
-      tabIndex={0}
-    >
-      <span className={`iconfont icon-${icon}`} />
-      <span>{caption}</span>
-    </div>
-  );
-};
+}) => (
+  <StyledMenuItem
+    onClick={(event) => {
+      event.preventDefault();
+      onClick();
+    }}
+    active={active}
+  >
+    <span className={`iconfont icon-${icon}`} />
+    <span>{caption}</span>
+  </StyledMenuItem>
+);
 
 MenuItem.propTypes = {
   caption: PropTypes.string.isRequired,

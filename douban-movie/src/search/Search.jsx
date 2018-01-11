@@ -7,9 +7,8 @@ import * as actions from './actions';
 import { view as Movies } from '../movies';
 import { MenuTypes } from '../constants';
 
-import { Section } from '../style';
+import { Section, SearchBox, TextInput, Button } from '../style';
 import { view as Loading } from '../loading';
-import './style.css';
 import { movieValidator } from '../functions';
 
 class Search extends React.Component {
@@ -58,16 +57,13 @@ class Search extends React.Component {
               ...transitionStyles[state],
             }}
           >
-            <div className="search-area">
-              <input
-                type="text"
+            <SearchBox>
+              <TextInput
                 placeholder="搜索电影"
                 onChange={this.onInputChange}
               />
-              <button className="btn" onClick={this.onSearch}>
-                搜索
-              </button>
-            </div>
+              <Button onClick={this.onSearch}>搜索</Button>
+            </SearchBox>
             <Movies subjects={subjects} />
             <Loading status={status} />
           </Section>

@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Status } from '../constants';
-import './style.css';
+import { Loading as StyledLoading, LoadingIcon, ErrorMessage } from '../style';
 
 /* eslint-disable react/prop-types */
 const Loading = ({ status }) => {
   switch (status) {
     case Status.LOADING: {
       return (
-        <div className="loading">
-          <span className="iconfont icon-loading" />
-        </div>
+        <StyledLoading>
+          <LoadingIcon />
+        </StyledLoading>
       );
     }
     case Status.FAILURE: {
       return (
-        <div className="loading">
-          <span className="error">加载异常</span>
-        </div>
+        <StyledLoading>
+          <ErrorMessage>加载异常</ErrorMessage>
+        </StyledLoading>
       );
     }
     case Status.SUCCESS: {
