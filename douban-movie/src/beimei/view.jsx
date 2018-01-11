@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Transition from 'react-transition-group/Transition';
 
 import * as actions from './actions';
 import { view as Movies } from '../movies';
 import { MenuTypes } from '../constants';
 import { view as Loading } from '../loading';
-import { Section } from '../style';
 import { movieValidator } from '../functions';
+import { Section } from '../style';
+import Fade from '../fade';
 
 class Beimei extends React.Component {
   componentDidMount() {
@@ -16,34 +16,14 @@ class Beimei extends React.Component {
   }
 
   render() {
-    const duration = 200;
-
-    const defaultStyle = {
-      transition: `opacity ${duration}ms ease-in-out`,
-      opacity: 0,
-    };
-
-    const transitionStyles = {
-      entering: { opacity: 0 },
-      entered: { opacity: 1 },
-    };
-
     const { status, subjects, active } = this.props;
     return (
-      <Transition in={active} timeout={duration}>
-        {state => (
-          <Section
-            active={active}
-            style={{
-              ...defaultStyle,
-              ...transitionStyles[state],
-            }}
-          >
-            <Movies subjects={subjects} />
-            <Loading status={status} />
-          </Section>
-        )}
-      </Transition>
+      <Fade in={active}>
+        <Section active={active} >
+          <Movies subjects={subjects} />
+          <Loading status={status} />
+        </Section>
+      </Fade>
     );
   }
 }

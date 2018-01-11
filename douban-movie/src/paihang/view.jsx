@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Transition from 'react-transition-group/Transition';
 
 import * as actions from './actions';
 import { view as Movies } from '../movies';
@@ -9,6 +8,7 @@ import { view as Loading } from '../loading';
 import { MenuTypes } from '../constants';
 import { Section } from '../style';
 import { movieValidator } from '../functions';
+import Fade from '../fade';
 
 class Paihang extends React.Component {
   componentDidMount() {
@@ -26,35 +26,17 @@ class Paihang extends React.Component {
   }
 
   render() {
-    const duration = 200;
-
-    const defaultStyle = {
-      transition: `opacity ${duration}ms ease-in-out`,
-      opacity: 0,
-    };
-
-    const transitionStyles = {
-      entering: { opacity: 0 },
-      entered: { opacity: 1 },
-    };
-
     const { status, subjects, active } = this.props;
     return (
-      <Transition in={active} timeout={duration}>
-        {state => (
-          <Section
-            active={active}
-            onScroll={this.onScroll}
-            style={{
-              ...defaultStyle,
-              ...transitionStyles[state],
-            }}
-          >
-            <Movies subjects={subjects} />
-            <Loading status={status} />
-          </Section>
-        )}
-      </Transition>
+      <Fade in={active}>
+        <Section
+          active={active}
+          onScroll={this.onScroll}
+        >
+          <Movies subjects={subjects} />
+          <Loading status={status} />
+        </Section>
+      </Fade>
     );
   }
 }
