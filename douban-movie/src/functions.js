@@ -10,7 +10,7 @@ export const movieFormat = item => ({
   year: item.year,
   type: item.genres.join(' / '),
   director: item.directors.map(director => director.name).join(' / '),
-  casts: item.casts.map(cast => cast.name).join(' / ')
+  casts: item.casts.map(cast => cast.name).join(' / '),
 });
 
 export const movieValidator = {
@@ -23,5 +23,5 @@ export const movieValidator = {
   year: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
-  casts: PropTypes.string.isRequired
+  casts: PropTypes.string.isRequired,
 };

@@ -20,12 +20,12 @@ class Beimei extends React.Component {
 
     const defaultStyle = {
       transition: `opacity ${duration}ms ease-in-out`,
-      opacity: 0
+      opacity: 0,
     };
 
     const transitionStyles = {
       entering: { opacity: 0 },
-      entered: { opacity: 1 }
+      entered: { opacity: 1 },
     };
 
     const { status, subjects, active } = this.props;
@@ -36,7 +36,7 @@ class Beimei extends React.Component {
             active={active}
             style={{
               ...defaultStyle,
-              ...transitionStyles[state]
+              ...transitionStyles[state],
             }}
           >
             <Movies subjects={subjects} />
@@ -52,23 +52,23 @@ Beimei.propTypes = {
   status: PropTypes.string.isRequired,
   subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
   loadMovies: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired
+  active: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const beimeiData = state.beimei;
 
   return {
     status: beimeiData.status,
     subjects: beimeiData.subjects,
-    active: state.menu === MenuTypes.BEIMEI
+    active: state.menu === MenuTypes.BEIMEI,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   loadMovies: (start = 0) => {
     dispatch(actions.fetchBeimei(start));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Beimei);

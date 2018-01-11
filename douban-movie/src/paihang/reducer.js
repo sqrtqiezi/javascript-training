@@ -9,10 +9,7 @@ export default (state = { status: Status.LOADING, subjects: [] }, action) => {
     }
     case FETCH_SUCCESS: {
       const subjects = action.result.subjects.map(item => movieFormat(item));
-      return {
-        status: Status.SUCCESS,
-        subjects: [...state.subjects, ...subjects]
-      };
+      return { status: Status.SUCCESS, subjects: [...state.subjects, ...subjects] };
     }
     case FETCH_FAILURE: {
       return { ...state, status: Status.FAILURE };

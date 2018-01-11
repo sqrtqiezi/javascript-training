@@ -30,12 +30,12 @@ class Paihang extends React.Component {
 
     const defaultStyle = {
       transition: `opacity ${duration}ms ease-in-out`,
-      opacity: 0
+      opacity: 0,
     };
 
     const transitionStyles = {
       entering: { opacity: 0 },
-      entered: { opacity: 1 }
+      entered: { opacity: 1 },
     };
 
     const { status, subjects, active } = this.props;
@@ -47,7 +47,7 @@ class Paihang extends React.Component {
             onScroll={this.onScroll}
             style={{
               ...defaultStyle,
-              ...transitionStyles[state]
+              ...transitionStyles[state],
             }}
           >
             <Movies subjects={subjects} />
@@ -63,23 +63,21 @@ Paihang.propTypes = {
   status: PropTypes.string.isRequired,
   subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
   loadMovies: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired
+  active: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const paihangData = state.paihang;
 
   return {
     status: paihangData.status,
     subjects: paihangData.subjects,
-    active: state.menu === MenuTypes.PAIHANG
+    active: state.menu === MenuTypes.PAIHANG,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  loadMovies: (start = 0) => {
-    dispatch(actions.fetchPaihang(start));
-  }
+  loadMovies: (start = 0) => dispatch(actions.fetchPaihang(start)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Paihang);

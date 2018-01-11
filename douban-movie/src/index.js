@@ -12,5 +12,5 @@ ReactDOM.render(
     <App />
   </Provider>,
   /* eslint-disable no-undef */
-  document.getElementById('root')
+  document.getElementById('root'),
 );

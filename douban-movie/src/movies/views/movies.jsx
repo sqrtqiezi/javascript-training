@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { movieValidator } from '../../functions';
 import './style.css';
 
 const Movies = ({ subjects }) => (
@@ -34,19 +35,7 @@ const Movies = ({ subjects }) => (
 );
 
 Movies.propTypes = {
-  subjects: PropTypes.arrayOf(
-    PropTypes.shape({
-      href: PropTypes.string.isRequired,
-      cover: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      score: PropTypes.number.isRequired,
-      collect: PropTypes.number.isRequired,
-      year: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-      director: PropTypes.string.isRequired,
-      casts: PropTypes.string.isRequired
-    })
-  ).isRequired
+  subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
 };
 
 export default Movies;
