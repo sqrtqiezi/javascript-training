@@ -11,6 +11,13 @@ import { movieValidator } from '../functions';
 import Fade from '../fade';
 
 class Paihang extends React.Component {
+  static propTypes = {
+    status: PropTypes.string.isRequired,
+    subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
+    loadMovies: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired,
+  }
+
   componentDidMount() {
     this.props.loadMovies();
 
@@ -40,13 +47,6 @@ class Paihang extends React.Component {
     );
   }
 }
-
-Paihang.propTypes = {
-  status: PropTypes.string.isRequired,
-  subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
-  loadMovies: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const paihangData = state.paihang;

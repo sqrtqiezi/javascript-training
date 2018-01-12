@@ -11,6 +11,13 @@ import { Section } from '../style';
 import Fade from '../fade';
 
 class Beimei extends React.Component {
+  static propTypes = {
+    status: PropTypes.string.isRequired,
+    subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
+    loadMovies: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired,
+  }
+
   componentDidMount() {
     this.props.loadMovies();
   }
@@ -27,13 +34,6 @@ class Beimei extends React.Component {
     );
   }
 }
-
-Beimei.propTypes = {
-  status: PropTypes.string.isRequired,
-  subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
-  loadMovies: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const beimeiData = state.beimei;

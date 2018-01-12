@@ -12,6 +12,13 @@ import { movieValidator } from '../functions';
 import Fade from '../fade';
 
 class Search extends React.Component {
+  static propTypes = {
+    status: PropTypes.string.isRequired,
+    subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
+    loadMovies: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired,
+  }
+
   constructor(...args) {
     super(...args);
     this.state = { q: '' };
@@ -52,13 +59,6 @@ class Search extends React.Component {
     );
   }
 }
-
-Search.propTypes = {
-  status: PropTypes.string.isRequired,
-  subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
-  loadMovies: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
-};
 
 const mapStateToProps = (state) => {
   const searchData = state.search;
