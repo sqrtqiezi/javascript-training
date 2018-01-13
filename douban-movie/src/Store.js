@@ -1,22 +1,20 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import { reducer as menuReducer } from './footer_menu';
-import { reducer as paihangReducer } from './paihang';
-import { reducer as beimeiReducer } from './beimei';
-import { reducer as searchReducer } from './search';
+import { reducer as menuReducer } from './containers/footer_menu';
+import { paihang, beimei, search } from './reducers';
+import api from './middleware/api';
 
-/* eslint-disable no-undef */
-const win = window;
+const win = global;
 
 const reducer = combineReducers({
   menu: menuReducer,
-  paihang: paihangReducer,
-  beimei: beimeiReducer,
-  search: searchReducer,
+  paihang,
+  beimei,
+  search,
 });
 
-const middlewares = [thunk];
+const middlewares = [thunk, api];
 if (process.env.NODE_ENV !== 'production') {
   /* eslint-disable global-require */
   middlewares.push(require('redux-immutable-state-invariant').default());

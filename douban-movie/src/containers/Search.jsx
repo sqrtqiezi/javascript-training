@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import * as actions from './actions';
-import { view as Movies } from '../movies';
-import { MenuTypes } from '../constants';
+import Movies from '../components/Movies';
+import Loading from '../components/Loading';
+import Fade from '../components/Fade';
 
-import { Section, SearchBox, TextInput, Button } from '../style';
-import { view as Loading } from '../loading';
+import { MenuTypes } from '../constants';
+import { Section, SearchBox, TextInput, Button } from './style';
 import { movieValidator } from '../functions';
-import Fade from '../fade';
+import { loadSearch } from '../actions';
 
 class Search extends React.Component {
   static propTypes = {
     status: PropTypes.string.isRequired,
     subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
-    loadMovies: PropTypes.func.isRequired,
+    loadSearch: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
   }
 
@@ -37,7 +37,7 @@ class Search extends React.Component {
     if (!q) {
       return;
     }
-    this.props.loadMovies(q);
+    this.props.loadSearch(q);
   }
 
   render() {
@@ -70,8 +70,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  loadMovies: q => dispatch(actions.fetchSearch(q)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, { loadSearch })(Search);

@@ -1,0 +1,50 @@
+.movies .item {
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.movies .item>a {
+  display: flex;
+}
+
+.movies .item .cover, .movies .item .cover img {
+  width: 70px;
+}
+
+.movies .item .detail {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.movies .item .detail h2 {
+  font-size: 16px;
+}
+
+.movies .item .detail .extra {
+  color: #999;
+  margin-top: 2px;
+}
+
+.movies .item .detail .score {
+  color: #FF5722;
+}
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 800ms ease-in;
+}

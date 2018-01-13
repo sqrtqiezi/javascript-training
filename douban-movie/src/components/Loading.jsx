@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Status } from '../constants';
-import { Loading as StyledLoading, LoadingIcon, ErrorMessage } from '../style';
+import { Loading as StyledLoading, LoadingIcon, ErrorMessage } from './style';
 
 /* eslint-disable react/prop-types */
 const Loading = ({ status }) => {

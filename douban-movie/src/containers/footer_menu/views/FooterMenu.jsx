@@ -1,6 +1,6 @@
 import React from 'react';
 import MenuItem from './MenuItem';
-import { MenuTypes } from '../../constants';
+import { MenuTypes } from '../../../constants';
 import { FooterMenu as StyledFooterMenu } from '../../style';
 
 function FooterMenu() {

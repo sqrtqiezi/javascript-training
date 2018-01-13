@@ -2,24 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import * as actions from './actions';
-import { view as Movies } from '../movies';
+import Loading from '../components/Loading';
+import Fade from '../components/Fade';
+
+import Movies from '../components/Movies';
 import { MenuTypes } from '../constants';
-import { view as Loading } from '../loading';
 import { movieValidator } from '../functions';
-import { Section } from '../style';
-import Fade from '../fade';
+import { Section } from './style';
+import { loadBeimei } from '../actions';
 
 class Beimei extends React.Component {
   static propTypes = {
     status: PropTypes.string.isRequired,
     subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
-    loadMovies: PropTypes.func.isRequired,
+    loadBeimei: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
-    this.props.loadMovies();
+    this.props.loadBeimei();
   }
 
   render() {
@@ -45,10 +46,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  loadMovies: (start = 0) => {
-    dispatch(actions.fetchBeimei(start));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Beimei);
+export default connect(mapStateToProps, { loadBeimei })(Beimei);

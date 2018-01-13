@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { movieValidator } from '../../functions';
+import { movieValidator } from '../functions';
 import './style.css';
 
 const Movies = ({ subjects }) => (
-  <div className="container">
+  <div className="container movies">
     {subjects.map(item => (
       <div className="item" key={item.id}>
         <a href={item.href}>

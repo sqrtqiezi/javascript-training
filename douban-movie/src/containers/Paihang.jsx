@@ -2,24 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import * as actions from './actions';
-import { view as Movies } from '../movies';
-import { view as Loading } from '../loading';
-import { MenuTypes } from '../constants';
-import { Section } from '../style';
+import Loading from '../components/Loading';
+import Movies from '../components/Movies';
+import { Status, MenuTypes } from '../constants';
 import { movieValidator } from '../functions';
-import Fade from '../fade';
+import { Section } from './style';
+import { loadPaihang } from '../actions';
+import Fade from '../components/Fade';
 
 class Paihang extends React.Component {
   static propTypes = {
     status: PropTypes.string.isRequired,
     subjects: PropTypes.arrayOf(PropTypes.shape(movieValidator)).isRequired,
-    loadMovies: PropTypes.func.isRequired,
+    loadPaihang: PropTypes.func.isRequired,
     active: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
-    this.props.loadMovies();
+    this.props.loadPaihang();
 
     this.onScroll = this.onScroll.bind(this);
   }
@@ -27,8 +27,8 @@ class Paihang extends React.Component {
   onScroll(event) {
     const { scrollHeight, scrollTop, clientHeight } = event.target;
 
-    if (scrollHeight - scrollTop === clientHeight) {
-      this.props.loadMovies(this.props.subjects.length);
+    if (scrollHeight - scrollTop === clientHeight && this.props.status !== Status.LOADING) {
+      this.props.loadPaihang();
     }
   }
 
@@ -58,8 +58,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  loadMovies: (start = 0) => dispatch(actions.fetchPaihang(start)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Paihang);
+export default connect(mapStateToProps, { loadPaihang })(Paihang);
