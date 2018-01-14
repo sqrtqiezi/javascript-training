@@ -1,5 +1,5 @@
 import React from 'react';
-import { view as FooterMenu } from './footer_menu';
+import { view as FooterMenu } from './FooterMenu';
 import Paihang from './Paihang';
 import Beimei from './Beimei';
 import Search from './Search';

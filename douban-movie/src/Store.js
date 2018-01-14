@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import { reducer as menuReducer } from './containers/footer_menu';
+import { reducer as menuReducer } from './containers/FooterMenu';
 import { paihang, beimei, search } from './reducers';
 import api from './middleware/api';
 
