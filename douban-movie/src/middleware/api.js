@@ -1,8 +1,8 @@
 import fetchJsonp from 'fetch-jsonp';
 
-const API_ROOT = '//api.douban.com/v2/';
+const API_ROOT = '//api.douban.com/v2';
 
-const callApi = (endpoint, data) => {
+function callApi(endpoint, data) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint;
 
   const params = [];
@@ -11,22 +11,18 @@ const callApi = (endpoint, data) => {
   }
   return fetchJsonp(`${fullUrl}?${params.join('&')}`)
     .then(response => response.json());
-};
+}
 
 export const CALL_API = Symbol('Call Api');
 
-export default store => next => (action) => {
+export default () => next => (action) => {
   const callAPI = action[CALL_API];
+
   if (typeof callAPI === 'undefined') {
     return next(action);
   }
 
-  let { endpoint } = callAPI;
-  const { types } = callAPI;
-
-  if (typeof endpoint === 'function') {
-    endpoint = endpoint(store.getState());
-  }
+  const { endpoint, types } = callAPI;
 
   if (typeof endpoint !== 'string') {
     throw new Error('Specify a string endpoint URL.');
@@ -39,8 +35,9 @@ export default store => next => (action) => {
   }
 
   const actionWith = (data) => {
-    const finalAction = Object.assign({}, action, data);
+    const finalAction = Object.assign({}, action, callAPI, data);
     delete finalAction[CALL_API];
+    delete finalAction.types;
     return finalAction;
   };
 

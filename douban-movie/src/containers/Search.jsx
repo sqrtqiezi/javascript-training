@@ -21,23 +21,23 @@ class Search extends React.Component {
 
   constructor(...args) {
     super(...args);
-    this.state = { q: '' };
+    this.state = { words: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
   onInputChange(event) {
-    this.setState({ q: event.target.value });
+    this.setState({ words: event.target.value });
   }
 
   onSearch(event) {
     event.preventDefault();
 
-    const q = this.state.q.trim();
-    if (!q) {
+    const words = this.state.words.trim();
+    if (!words) {
       return;
     }
-    this.props.loadSearch(q);
+    this.props.loadSearch(words);
   }
 
   render() {

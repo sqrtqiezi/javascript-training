@@ -1,4 +1,4 @@
-import { SET_MENU } from './actionTypes';
+import { SET_MENU } from './actions';
 import { MenuTypes } from '../../constants';
 
 export default (state = MenuTypes.PAIHANG, action) => {

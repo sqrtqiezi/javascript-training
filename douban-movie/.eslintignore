@@ -2,3 +2,5 @@ build/*
 config/*
 node_modules/*
 scripts/*
+__mocks__
+*.spec.*

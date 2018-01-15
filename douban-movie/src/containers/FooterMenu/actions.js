@@ -1,6 +1,5 @@
-import { SET_MENU } from './actionTypes';
+export const SET_MENU = 'MENU/SET';
 
-/* eslint-disable import/prefer-default-export */
 export const setMenu = menuType => ({
   type: SET_MENU,
   menu: menuType,

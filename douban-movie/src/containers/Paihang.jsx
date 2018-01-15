@@ -18,10 +18,13 @@ class Paihang extends React.Component {
     active: PropTypes.bool.isRequired,
   }
 
+  constructor(...args) {
+    super(...args);
+    this.onScroll = this.onScroll.bind(this);
+  }
+
   componentDidMount() {
     this.props.loadPaihang();
-
-    this.onScroll = this.onScroll.bind(this);
   }
 
   onScroll(event) {
