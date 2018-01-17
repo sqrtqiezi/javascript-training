@@ -24,18 +24,20 @@
     constructor(height = 400) {
       // 高度为固定值，宽度为 200 至 800 之间的随机数
       this.width = Math.floor(Math.random() * 501) + 300;
-      this.height = height;
+      this.height = Math.floor(height);
       // 图片预载入依赖于确定的 URL
-      this.index = Math.floor(Math.random() * 1085);
-    }
-  
-    get url() {
-      return `https://picsum.photos/${this.width}/${this.height}/?image=${this.index}`;
+      this.url = `https://picsum.photos/${this.width}/${this.height}/?image=${Math.floor(Math.random() * 1085)}`;
     }
   
     // 图片预加载，给你丝滑般的加载体验
     preload(callback) {
-      const preloadResolved = () => {
+      const resolve = () => {
+        this.$el = $(`<img src="${this.url}" style="height: ${this.height}px" />`);
+        callback(this);
+        Event.trigger('PRELOAD_RESOLVED');
+      }
+
+      const reject = () => {
         Event.trigger('PRELOAD_RESOLVED');
       }
   
@@ -43,15 +45,10 @@
       image.src = this.url;
   
       if(image.complete) {
-        callback(this);
-        preloadResolved();
+        resolve();
       } else {
-        image.onload = () =>{
-          callback(this);
-          this.$el = $(`<img src="${this.url}" style="height: ${this.height}px" />`);
-          preloadResolved();
-        };
-        image.onerror = () => preloadResolved();
+        image.onload = resolve;
+        image.onerror = reject;
       }
     }
   }
