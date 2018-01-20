@@ -37,19 +37,20 @@
 
     .item {
       position: absolute;
-      width: 300px;
+      width: 236px;
       background-color: white;
-      box-shadow: -5px 5px 5px #BBBBBB;
-      float: left;
+      transition: all .2s ease-out;
+      opacity: 0;
     }
 
     .item:hover {
-      border-bottom: 2px solid #FC636D;
+      transform: translateY(-5px);
+      box-shadow: -5px 5px 5px #BBBBBB;
     }
 
     .item-header .cover {
       display: inline-block;
-      width: 300px;
+      width: 100%;
       height: auto;
       vertical-align: bottom;
     }
