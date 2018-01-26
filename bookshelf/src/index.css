@@ -3,7 +3,7 @@
 }
 
 html, body, #root {
-  width: 100%;
+  min-height: 100vh;
 }
 
 body {
@@ -27,6 +27,5 @@ ul, li {
 #root {
   display: flex;
   flex-flow: column;
-  min-height: 100vh;
   background-color: #333333;
 }
