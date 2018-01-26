@@ -133,3 +133,47 @@ main {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg);  }
 }
+
+.error-message {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  color: white;
+  background-color: #D1192A;
+  box-shadow: 0 0 12px #999;
+  border-radius: 3px;
+  opacity: .8;
+  cursor: pointer;
+}
+
+.fadeIn {
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+.fadeOut {
+  -webkit-animation-duration: .8s;
+  animation-duration: .8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: .8; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: .8; }
+  100% { opacity: 0; }
+}
+
+.error-message .fa {
+  margin-right: 15px;
+}

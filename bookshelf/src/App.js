@@ -5,6 +5,7 @@ import fetchJsonp from 'fetch-jsonp';
 import BookList from './container/BookList';
 import SearchBox from './container/SearchBox';
 import SearchResult from './container/SearchResult';
+import ErrorMessage from './container/ErrorMessage';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +17,8 @@ class App extends Component {
       read: [],
       wish: [],
       search: [],
-      isSearching: false
+      isSearching: false,
+      errorMessage: ''
     }
   }
 
@@ -46,9 +48,17 @@ class App extends Component {
           })
         })
         .catch(error => {
-          console.log('网络加载异常')
+          this.showError('网络加载异常');
         });
     }
+  }
+
+  showError(message) {
+    console.log(message);
+    this.setState({ errorMessage: message });
+    setTimeout(() => {
+      this.setState({ errorMessage: '' });
+    }, 1000);
   }
 
   saveState() {
@@ -104,7 +114,7 @@ class App extends Component {
             });
         })
         .catch(error => {
-          console.log('网络加载异常')
+          this.showError('网络加载异常');
         });
     }
   }
@@ -176,6 +186,7 @@ class App extends Component {
             />)}
           />
         </div>
+        <ErrorMessage message={this.state.errorMessage} />
       </div>
     );
   }
