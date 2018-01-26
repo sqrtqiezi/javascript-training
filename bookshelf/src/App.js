@@ -44,6 +44,9 @@ class App extends Component {
             initState(books);
             setTimeout(this.saveState.bind(this), 0);
           })
+        })
+        .catch(error => {
+          console.log('网络加载异常')
         });
     }
   }
@@ -63,12 +66,23 @@ class App extends Component {
   }
 
   searchBooks(q) {
-    const findBookStatus = (book, books) => {
-     for (const item of books) {
-       if (item.id === book.id) {
-         book.status = item.status;
-       }
-     }
+    const findBookStatus = book => {
+      for (const item of this.state.read) {
+        if (item.id === book.id) {
+          return item.status;
+        }
+      }
+      for (const item of this.state.reading) {
+        if (item.id === book.id) {
+          return item.status;
+        }
+      }
+      for (const item of this.state.wish) {
+        if (item.id === book.id) {
+          return item.status;
+        }
+      }
+      return 'search';
     }
     if (!this.state.isSearching) {
       this.setState({ 
@@ -79,17 +93,18 @@ class App extends Component {
         .then(response => {
           response.json()
             .then(data => {
-              const books = data.books;
-              books.forEach(book => {
-                findBookStatus(book, this.state.reading);
-                findBookStatus(book, this.state.read);
-                findBookStatus(book, this.state.wish);
-              })
+              const books = data.books.map(book => ({
+                ...book,
+                status: findBookStatus(book)
+              }))
               this.setState({
                 isSearching: false,
                 search: books
               })
             });
+        })
+        .catch(error => {
+          console.log('网络加载异常')
         });
     }
   }
