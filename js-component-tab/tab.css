@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+.tab-container {
+  width: 500px;
+  padding: 10px;
+}
+
+.tab-container > .tabs {
+  border-bottom: 1px solid #DDDDDD;
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.tab-container > .tabs > li {
+  list-style-type: none;
+  display: inline-block;
+  margin-bottom: -1px;
+}
+
+.tab-container > .tabs > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  border-radius:  4px 4px 0 0;
+  text-decoration: none;
+  color: #5A7AB4;
+}
+
+.tab-container > .tabs > li.active > a {
+  color: #555555;
+  border: 1px solid #DDDDDD;
+  border-bottom-color: white;
+}
+
+.tab-container > .tabs > li > a:hover {
+  background-color: #EEEEEE;
+}
+
+.tab-container .tab-content .tab-panel {
+  display: none;
+  height: 300px;
+  font-size: 3em;
+}
+
+.tab-container .tab-content .tab-panel.active {
+  display: block;
+}
+
+.tab-container .tab-content .tab-panel.active-fadeIn {
+  display: block;
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
